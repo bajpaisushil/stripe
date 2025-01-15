@@ -9,5 +9,9 @@ export class PaymentsController {
   async createPaymentIntent(@Body() body: { amount: number; currency: string }) {
     return this.paymentsService.createPaymentIntent(body.amount, body.currency);
   }
-  
+
+  @Post('config')
+  async saveConfig(@Body() body: { stripeApiKey: string; alternativeGatewayUrl?: string }) {
+    return this.paymentsService.saveConfig(body);
+  }
 }

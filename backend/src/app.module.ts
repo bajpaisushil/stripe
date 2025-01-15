@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { StripeModule } from './stripe/stripe.module';
+import { MongooseModule } from '@nestjs/mongoose';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
-    imports: [ConfigModule.forRoot(), StripeModule],
+  imports: [
+    MongooseModule.forRoot('mongodb+srv://sushilbajpai:sushilbajpai@cluster0.fce4vg7.mongodb.net/nest-stripe-integration?retryWrites=true&w=majority&appName=Cluster0'),
+    PaymentsModule,
+  ],
 })
 export class AppModule {}
